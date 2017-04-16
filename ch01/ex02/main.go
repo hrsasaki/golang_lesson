@@ -1,7 +1,7 @@
 // See page 9.
 //!+
 
-// ch01/ex01 prints its command-line arguments.
+// ch01/ex02 prints its command-line arguments.
 package main
 
 import (

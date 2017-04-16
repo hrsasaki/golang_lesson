@@ -1,7 +1,7 @@
 // See page 9.
 //!+
 
-// /ch01/ex01 prints its command-line arguments.
+// /ch01/ex01 prints its command-line arguments and a command-line name.
 package main
 
 import (
