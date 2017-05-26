@@ -23,7 +23,7 @@ import (
 var xmin, ymin, xmax, ymax = -2, -2, +2, +2
 var width, height = 1024, 1024
 var xorigin, yorigin = 0, 0
-var scale = 1
+var scale = 1.0
 
 func main() {
 	http.HandleFunc("/", handler)
@@ -39,15 +39,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			if err != nil {
 				handleError(err)
 			}
-			xorigin = tmp
+			xmin += tmp
 		case "y":
 			tmp, err := strconv.Atoi(v[0])
 			if err != nil {
 				handleError(err)
 			}
-			yorigin = tmp
+			ymin += tmp
 		case "scale":
-			tmp, err := strconv.Atoi(v[0])
+			tmp, err := strconv.ParseFloat(v[0], 64)
 			if err != nil {
 				handleError(err)
 			}
@@ -66,7 +66,7 @@ func handleError(err error) {
 
 // from gopl.io/ch3/mandelbrot.
 func generatePng(out io.Writer) {
-	img := image.NewRGBA(image.Rect(0, 0, width, height))
+	img := image.NewRGBA(image.Rect(0, 0, int(float64(width)*scale), int(float64(height)*scale)))
 	for py := 0; py < height; py++ {
 		y := float64(py)/float64(height)*float64(ymax-ymin) + float64(ymin)
 		for px := 0; px < width; px++ {

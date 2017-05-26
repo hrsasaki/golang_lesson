@@ -19,7 +19,7 @@ func main() {
 //!+rev
 // reverse reverses a slice of ints in place.
 func reverse(s *[6]int) {
-	for i, elem := range *s {
+	for i, elem := range *s { // 素直に添え字を見て比較するのが模範解答
 		s[len(*s)-i-1] = elem
 	}
 }
