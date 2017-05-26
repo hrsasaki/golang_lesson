@@ -35,7 +35,7 @@ func main() {
 		}
 	}
 	for k, issue := range issues {
-		fmt.Printf("%s\n", k)
+		fmt.Printf("*** %s ***\n", k)
 		for _, item := range issue {
 			fmt.Printf("#%-5d %9.9s %.55s\n",
 				item.Number, item.User.Login, item.Title)
