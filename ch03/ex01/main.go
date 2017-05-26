@@ -55,7 +55,7 @@ func corner(i, j int) (float64, float64, bool) {
 	sy := height/2 + (x+y)*sin30*xyscale - z*zscale
 
 	// var isOk descrives which all return value is NaN or not
-	isOk := !(math.IsNaN(sx) || math.IsNaN(sy))
+	isOk := !(math.IsNaN(sx) || math.IsNaN(sy) || math.IsInf(sx, 0) || math.IsInf(sy, 0))
 	return sx, sy, isOk
 }
 

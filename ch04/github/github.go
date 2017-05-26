@@ -34,14 +34,11 @@ type User struct {
 	HTMLURL string `json:"html_url"`
 }
 
-// parameter 'assignees' 'labels' is not supperted.
 type IssueRequest struct {
-	Token string `json:"token"`
 	Title string `json:"title"`
-	Body  string `json:"body"` // markdown
+	Body  string `json:"body"`
 }
 
-// only URL
 type IssueCreateResult struct {
 	URL string `json:"html_url"`
 }

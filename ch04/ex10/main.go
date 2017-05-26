@@ -27,15 +27,15 @@ func main() {
 	fmt.Printf("%d issues:\n", result.TotalCount)
 	for _, item := range result.Items {
 		if item.CreatedAt.After(now.AddDate(0, -1, 0)) {
-			issues["1monthago"] = append(issues["month"], item)
+			issues["1monthago"] = append(issues["1monthago"], item)
 		} else if item.CreatedAt.After(now.AddDate(-1, 0, 0)) {
-			issues["1yearago"] = append(issues["year"], item)
+			issues["1yearago"] = append(issues["1yearago"], item)
 		} else {
-			issues["older"] = append(issues["old"], item)
+			issues["older"] = append(issues["older"], item)
 		}
 	}
 	for k, issue := range issues {
-		fmt.Printf("%s\n", k)
+		fmt.Printf("*** %s ***\n", k)
 		for _, item := range issue {
 			fmt.Printf("#%-5d %9.9s %.55s\n",
 				item.Number, item.User.Login, item.Title)

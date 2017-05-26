@@ -115,7 +115,8 @@ func absFloat(z ComplexFloat) big.Float {
 }
 
 func absRat(z ComplexRat) big.Rat {
-
+	powreal := z.real.Mul(*z.real, *z.real)
+	powimag := z.imag.Mul(*z.imag, *z.imag)
 }
 
 func squareFloat(z ComplexFloat) ComplexFloat {
