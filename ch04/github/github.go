@@ -32,4 +32,13 @@ type User struct {
 	HTMLURL string `json:"html_url"`
 }
 
+type IssueRequest struct {
+	Title string `json:"title"`
+	Body  string `json:"body"`
+}
+
+type IssueCreateResult struct {
+	URL string `json:"html_url"`
+}
+
 //!-
