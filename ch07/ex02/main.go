@@ -10,26 +10,26 @@ import (
 //!+bytecounter
 type CountWriter struct {
 	Writer io.Writer
-	Count  *int64
+	Count  int64
 }
 
 func (w *CountWriter) Write(p []byte) (int, error) {
-	num := int64(len(p))
-	w.Count = &num
-	return len(p), nil
+	n, err := w.Writer.Write(p)
+	w.Count += int64(n)
+	return n, err
 }
 
 func CountingWriter(w io.Writer) (io.Writer, *int64) {
-	cw := new(CountWriter)
-	cw.Write([]byte("hello"))
-	return cw.Writer, cw.Count
+	var cw = CountWriter{w, 0}
+	return &cw, &cw.Count
 }
 
 //!-bytecounter
 
 func main() {
 	//!+main
-	_, n := CountingWriter(os.Stdout)
-	fmt.Println(&n)
+	w, n := CountingWriter(os.Stdout)
+	fmt.Fprintln(w, "Hello, World")
+	fmt.Println(*n)
 	//!main
 }
