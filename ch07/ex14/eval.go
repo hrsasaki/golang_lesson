@@ -70,7 +70,7 @@ func (c call) Eval(env Env) float64 {
 func (m maxmin) Eval(env Env) float64 {
 	newExpr, err := Parse(Format(Expr(m)))
 	if err != nil {
-		panic(fmt.Sprintf("unsupported maxmin"))
+		panic(fmt.Sprintf("unsupported ma"))
 	}
 }
 

@@ -1,0 +1,71 @@
+{
+	"Dir": "/usr/local/Cellar/go/1.8.1/libexec/src/strings",
+	"ImportPath": "strings",
+	"Name": "strings",
+	"Doc": "Package strings implements simple functions to manipulate UTF-8 encoded strings.",
+	"Target": "/usr/local/Cellar/go/1.8.1/libexec/pkg/darwin_amd64/strings.a",
+	"Goroot": true,
+	"Standard": true,
+	"StaleReason": "standard package in Go release distribution",
+	"Root": "/usr/local/Cellar/go/1.8.1/libexec",
+	"GoFiles": [
+		"compare.go",
+		"reader.go",
+		"replace.go",
+		"search.go",
+		"strings.go",
+		"strings_amd64.go",
+		"strings_decl.go"
+	],
+	"IgnoredGoFiles": [
+		"strings_generic.go",
+		"strings_s390x.go"
+	],
+	"SFiles": [
+		"strings.s"
+	],
+	"Imports": [
+		"errors",
+		"io",
+		"unicode",
+		"unicode/utf8"
+	],
+	"Deps": [
+		"errors",
+		"internal/race",
+		"io",
+		"runtime",
+		"runtime/internal/atomic",
+		"runtime/internal/sys",
+		"sync",
+		"sync/atomic",
+		"unicode",
+		"unicode/utf8",
+		"unsafe"
+	],
+	"TestGoFiles": [
+		"export_test.go"
+	],
+	"XTestGoFiles": [
+		"compare_test.go",
+		"example_test.go",
+		"reader_test.go",
+		"replace_test.go",
+		"search_test.go",
+		"strings_test.go"
+	],
+	"XTestImports": [
+		"bytes",
+		"fmt",
+		"io",
+		"io/ioutil",
+		"math/rand",
+		"reflect",
+		"strings",
+		"sync",
+		"testing",
+		"unicode",
+		"unicode/utf8",
+		"unsafe"
+	]
+}
