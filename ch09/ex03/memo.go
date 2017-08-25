@@ -64,7 +64,6 @@ func (memo *Memo) CancelableGet(key string) (interface{}, error) {
 		for range memo.requests {
 			// Do nothing.
 		}
-		return nil, nil
 	default:
 		memo.requests <- request{key, response}
 	}
