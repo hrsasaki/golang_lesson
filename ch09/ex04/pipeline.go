@@ -1,24 +1,12 @@
 package ex04
 
-import (
-	"fmt"
-	"sync"
-)
-
-var channels []chan int
-var num = 1
-
-var initOnce sync.Once
-
-func initChannels() {
-	for i := 0; i < num; i++ {
-		channels = append(channels, make(chan int))
-	}
-}
+import "fmt"
 
 func Exec(numOfGoroutines int) {
-	num = numOfGoroutines
-	initChannels()
+	var channels []chan int
+	for i := 0; i < numOfGoroutines; i++ {
+		channels = append(channels, make(chan int))
+	}
 
 	// first goroutine of pipeline
 	go func() {
@@ -28,7 +16,7 @@ func Exec(numOfGoroutines int) {
 		close(channels[0])
 	}()
 
-	for i := 1; i < num; i++ {
+	for i := 1; i < numOfGoroutines; i++ {
 		// copy index variable
 		index := i
 		go func() {
@@ -41,6 +29,6 @@ func Exec(numOfGoroutines int) {
 
 	// last goroutine of pipeline
 	for x := range channels[len(channels)-1] {
-		fmt.Println(x)
+		fmt.Print(x)
 	}
 }

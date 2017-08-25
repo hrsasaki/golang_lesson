@@ -7,5 +7,7 @@ func TestExec(t *testing.T) {
 }
 
 func BenchmarkExec(b *testing.B) {
-	Exec(10000)
+	for i := 0; i < b.N; i++ {
+		Exec(10000)
+	}
 }

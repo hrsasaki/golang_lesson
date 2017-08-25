@@ -11,7 +11,9 @@ func TestPipeline(t *testing.T) {
 // }
 
 func BenchmarkTestPipeline(b *testing.B) {
-	Exec(10000)
+	for i := 0; i < b.N; i++ {
+		Exec(10000)
+	}
 }
 
 // func BenchmarkTestPipeline2(b *testing.B) {
