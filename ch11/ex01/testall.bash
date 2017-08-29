@@ -1,0 +1,2 @@
+cd charcount
+go test

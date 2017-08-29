@@ -67,62 +67,12 @@ func TestUnion(t *testing.T) {
 }
 
 // Benchmark
-func BenchmarkHas(b *testing.B) {
-	var tests = []struct {
-		input int
-		want  bool
-	}{
-		{0, true},
-		{1, false},
-		{3, true},
-		{64, true},
-		{66, false},
-	}
-	intSet := IntSet{[]uint64{9, 1}}
-	for i := 0; i < b.N; i++ {
-		for _, test := range tests {
-			intSet.Has(test.input)
-		}
-	}
-}
-
-func BenchmarkAdd(b *testing.B) {
-	var tests = []struct {
-		input int
-		want  IntSet
-	}{
-		{6, IntSet{[]uint64{65}}},
-		{128, IntSet{[]uint64{65, 0, 1}}},
-	}
-	intSet := IntSet{[]uint64{1}}
-	for i := 0; i < b.N; i++ {
-		for _, test := range tests {
-			intSet.Add(test.input)
-		}
-	}
-}
-
-func BenchmarkUnion(b *testing.B) {
-	var tests = []struct {
-		input IntSet
-		want  IntSet
-	}{
-		{IntSet{[]uint64{4}}, IntSet{[]uint64{13}}},
-		{IntSet{[]uint64{32, 0, 1, 5, 24}}, IntSet{[]uint64{41, 0, 1, 5, 24}}},
-		{IntSet{[]uint64{32, 0, 1}}, IntSet{[]uint64{41, 0, 1}}},
-	}
-	intSet := IntSet{[]uint64{9}}
-	for i := 0; i < b.N; i++ {
-		for _, test := range tests {
-			intSet.UnionWith(&test.input)
-		}
-	}
-}
-
 func benchmarkAdd(b *testing.B, max int) {
 	rand.Seed(time.Now().UnixNano())
 	intSet := IntSet{[]uint64{1}}
 	for i := 0; i < b.N; i++ {
+		// 毎回同じデータを渡すようにしたいので、forループの外であらかじめデータを作っておく
+		// 一つの IntSet に Add し続けているのはテストとしてまずい
 		intSet.Add(rand.Intn(max))
 	}
 }
